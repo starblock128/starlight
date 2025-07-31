@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pico Mouse Control</title>
+    <!-- 設定 viewport，避免手機自動縮放，並禁止雙指縮放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <style>
+        /* 頁面基本樣式 */
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 50px;
+            /* 禁止瀏覽器的觸控手勢（避免上下滑動、雙擊縮放） */
+            touch-action: none;
+        }
+        /* 控制按鈕大小與樣式 */
+        button {
+            width: 100px;
+            height: 60px;
+            margin: 10px;
+            font-size: 18px;
+            /* 禁止按鈕觸控手勢，避免干擾 */
+            touch-action: none;
+        }
+        /* 使用 CSS Grid 排列方向按鈕 */
+        .grid {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mouse Control</h1>
+    <!-- 控制 UI -->
+    <div class="grid">
+        <div></div>
+        <button id="btn-up">↑</button>
+        <div></div>
+
+        <button id="btn-left">←</button>
+        <!-- 中間的按鈕做「點擊滑鼠左鍵」 -->
+        <button onclick="send('click')">●</button>
+        <button id="btn-right">→</button>
+
+        <div></div>
+        <button id="btn-down">↓</button>
+        <div></div>
+    </div>
+
+    <script>
+        let intervalId = null;  // 用來記錄 setInterval ID（避免重複啟動）
+
+        /**
+         * 啟動連續發送動作
+         * @param {string} action - 動作名稱（例如 "up"、"down"、"left"、"right"）
+         */
+        function startSend(action) {
+            if (intervalId) return; // 如果已經在執行，就不要重複啟動
+            send(action); // 立即執行一次，避免第一次延遲
+            intervalId = setInterval(() => {
+                send(action); // 每 100 毫秒發送一次
+            }, 100);
+        }
+
+        /**
+         * 停止連續發送
+         */
+        function stopSend() {
+            clearInterval(intervalId);
+            intervalId = null;
+        }
+
+        /**
+         * 發送 HTTP POST 請求給 Flask 後端
+         * @param {string} action - 動作名稱
+         */
+        function send(action) {
+            fetch('/control', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({action: action})
+            });
+        }
+
+        /**
+         * 綁定按鈕事件
+         * 使用 Pointer Events（pointerdown/pointerup）
+         * → 同時支援 PC 滑鼠、手機觸控、平板手寫筆
+         */
+        function bindButton(id, action) {
+            const btn = document.getElementById(id);
+
+            // 按下（開始連續動作）
+            btn.addEventListener('pointerdown', (e) => {
+                e.preventDefault(); // 阻止預設行為（避免手機觸發點擊/選取）
+                startSend(action);
+            });
+
+            // 放開（停止連續動作）
+            btn.addEventListener('pointerup', stopSend);
+            btn.addEventListener('pointercancel', stopSend); // 觸控中斷
+            btn.addEventListener('pointerleave', stopSend);  // 滑鼠移出按鈕
+        }
+
+        // 綁定四個方向按鈕
+        bindButton('btn-up', 'up');
+        bindButton('btn-down', 'down');
+        bindButton('btn-left', 'left');
+        bindButton('btn-right', 'right');
+    </script>
+</body>
+</html>

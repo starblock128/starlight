@@ -1,0 +1,51 @@
+/* ===== 鍵盤輸入區塊 ===== */
+.keyboard-section {
+    margin-top: 20px;
+}
+
+/* 輸入列 */
+.keyboard-input-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+/* 輸入框 */
+.keyboard-input-row input {
+    height: 50px;
+    font-size: 18px;
+    box-sizing: border-box; /*確保輸入框 width 包含 padding，不會因 padding 擠爆佈局*/
+    padding: 0 10px;
+
+    border: 1px solid #fff;
+    background-color: #111;
+    color: #fff;
+
+    border-top-right-radius: 0; /*移除圓角，確保貼齊*/
+    border-bottom-right-radius: 0;
+}
+
+/* SEND按鈕 */
+.keyboard-input-row .send-btn {
+    width: 100px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -1px;
+}
+
+/* 第二列與後續 */
+.keyboard-action-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.keyboard-action-row + .keyboard-action-row { /*選擇相鄰的下一個兄弟元素*/
+    margin-top: 10px; /* 從第二列之後，每列上方加間距 */
+}
+
+/* 鍵盤按鈕 */
+.keyboard-action-row button {
+    width: 100px;
+    height: 50px;
+}

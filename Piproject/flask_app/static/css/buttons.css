@@ -1,0 +1,24 @@
+/* ===== 通用按鈕 ===== */
+button {
+    font-size: 18px;
+    border: 1px solid #fff;
+    background-color: #111; 
+    color: #fff;
+    cursor: pointer; /*pointer>手指圖示*/
+    padding: 0;
+
+    display: flex; /*啟用 Flex 容器*/
+    align-items: center; /*Flex容器垂直置中*/
+    justify-content: center; /*Flex容器水平置中*/
+
+    line-height: normal;
+    border-radius: 8px; /* 稍微圓角 */
+    transition: background 0.2s, transform 0.1s; /*狀態改變時動畫過渡效果*/
+}
+
+/* 按下效果 */
+button:active {
+    background-color: #333;
+    transform: scale(0.95);
+}
+

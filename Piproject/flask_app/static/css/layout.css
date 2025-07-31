@@ -1,0 +1,72 @@
+/* 頂部固定列 */
+.top-bar {
+    position: fixed; /* 位置固定 */
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 100%;
+
+    display: flex; /*啟用 Flex 容器*/
+    justify-content: space-between; /*水平分善對齊*/
+    align-items: center; /* 垂直置中 */
+
+    background-color: #111;
+    color: #fff;
+    font-size: 12px;
+    padding: 0 20px; /*上下內距、左右內距 */
+
+    text-align: left; /* 文字靠左顯示 */
+    border-bottom: 1px solid #444; /* 邊框_底 */
+    z-index: 9999; /* 確保在最上層 */
+}
+
+/* 頂部列_右 */
+.top-bar-right {
+    margin-right: 30px; /* 外距_右 */
+}
+
+/*底部固定列*/
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: #111;
+    color: #fff;
+
+    padding: 10px 20px;
+    font-size: 12px;
+
+    display: flex; /*啟用 Flex 容器*/
+    align-items: center; /* 垂直置中 */
+    text-align: left; /* 靠左 */
+
+    border-top: 1px solid #444;
+    z-index: 9999;
+}
+
+/* 顯示主區塊設定 */
+body { 
+    padding-top: 45px; /* 留空避免內容被 top-bar 擋住 */
+    padding-bottom: 50px; /* 留空避免內容被bottom-bar擋住 */
+
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin-top: 20px;
+
+    background-color: #000;
+    color: #fff;
+}
+
+/* 擷取畫面區塊設定 */
+.video-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.video-container img {
+    width: 100%;
+    max-width: 1920px;
+    border: 2px solid #ccc;
+}

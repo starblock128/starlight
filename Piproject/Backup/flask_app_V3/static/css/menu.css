@@ -1,0 +1,48 @@
+/* 下拉選單樣式 */
+
+/* 最外層容器，包住按鈕跟選單內容 */
+.menu-manual {
+    position: relative; /* 相對位置 */
+}
+
+/* 主按鈕 */
+.menu-manual-btn {
+    background-color: #111;
+    color: #fff;
+    border: none; /* 移除外框 */
+    padding: 6px 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 顯示容器 */
+.menu-manual-content {
+    display: none; /* 預設隱藏 */
+    position: absolute;
+    top: 100%; /* 放在按鈕正下方 */
+    left: 0;
+    background-color: #222;
+    min-width: 120px;
+    border: 1px solid #444;
+    border-radius: 6px; /* 圓角外框 */
+    z-index: 10000;
+}
+
+/* 滑鼠移入主區塊時，顯示容器 */
+.menu-manual:hover .menu-manual-content {
+    /*用.menu-manual:hover可以確保在整個選單容器裡時，都能顯示*/
+    display: block;
+}
+
+/* 選項 */
+.menu-manual-content a {
+    display: block; /* 讓選項充滿整行，增加可點擊範圍 */
+    color: #fff;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+/* 滑鼠移入選項時的變化 */
+.menu-manual-content a:hover {
+    background-color: #333;
+}

@@ -1,0 +1,15 @@
+{
+  "folders": [
+    {
+      "name": "Piproject",
+      "path": "Piproject"
+    },
+    {
+      "name": "PicoProject",
+      "path": "PicoProject"
+    }
+  ],
+  "settings": {
+    // 可共用的設定也可以寫在這裡
+  }
+}

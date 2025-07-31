@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網頁樣式設定資訊 -->
+<head>
+    <meta charset="UTF-8">
+    <title>StarLight Controller</title> <!-- 瀏覽器頁籤顯示的標題，分頁標籤，書籤 -->
+    
+    <!-- 響應式設定，確保手機適配 
+        "viewport" → 告訴瀏覽器要如何縮放頁面 
+        width=device-width → 頁面寬度跟裝置螢幕寬度一致 
+        initial-scale=1.0 → 預設縮放比例
+        user-scalable=no → 禁止使用者手動縮放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> 
+
+    <!-- 引用樣式設計 -->
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/menu.css">
+    <link rel="stylesheet" href="/static/css/buttons.css">
+    <link rel="stylesheet" href="/static/css/mouse.css">
+    <link rel="stylesheet" href="/static/css/keyboard.css">
+</head>
+
+<!-- 網頁內容 -->
+<body>
+    <!-- 頂部固定列 -->
+    <div class="top-bar">
+        <!-- 頂部列_左 -->
+        <div class="top-bar-left">
+            <!-- 下拉選單 -->
+            <div class="menu-manual">
+                <button class="menu-manual-btn">手動執行 ▼</button>
+                <div class="menu-manual-content">
+                    <!-- <a></a> 是一個「下拉選單的選項」 -->
+                    <a href="#" onclick="manualAction('action1')">動作 1</a>
+                    <a href="#" onclick="manualAction('action2')">動作 2</a>
+                    <a href="#" onclick="manualAction('action3')">動作 3</a>
+                </div>
+            </div>
+        </div>
+        <!-- 頂部列_右 -->
+        <div class="top-bar-right">
+            <!-- 現在時間顯示區 -->
+            <span id="currentTime">Loading...</span>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <img src="/video_feed" alt="Video Feed">
+    </div>
+
+    <!-- 滑鼠輸入區塊 -->
+    <div class="mouse-section"> <!-- 建立一個區塊容器div，使用head設定的grid樣式 -->
+        <!-- 第一列 -->
+        <div></div>
+        <button id="btn-up">↑</button>
+        <div></div>
+        <!-- 第二列 -->
+        <button id="btn-left">←</button>
+        <button onclick="send('left_click')">●</button>
+        <button id="btn-right">→</button>
+        <!-- 第三列 -->
+        <div></div>
+        <button id="btn-down">↓</button>
+        <button onclick="send('right_click')">⦿</button> <!-- 新增右鍵 -->
+        <div></div>
+    </div>
+
+    <!-- 鍵盤輸入區塊 -->
+    <div class="keyboard-section">
+        <!-- 第一列 -->
+        <!-- 文字輸入框，placeholder是當輸入框為空時，顯示提示字 -->
+        <div class="keyboard-input-row">
+            <input 
+                type="text" 
+                id="inputText" 
+                placeholder="輸入內容" 
+                >
+            <!-- 送出按鈕 -->
+            <button class="send-btn" onclick="sendText()">Send</button>
+        </div>
+
+        <!-- 第二列 -->
+        <div class="keyboard-action-row">
+            <button onclick="sendKey('SHIFT')">⇧</button> <!-- SHIFT -->
+            <button onclick="sendKey('BACKSPACE')">⌫</button> <!-- Backspace -->
+            <button onclick="sendKey('ENTER')">⏎</button>
+        </div>
+
+        <!-- 第三列 -->
+        <div class="keyboard-action-row">
+            <button onclick="sendKey('CTRL_ALT_DEL')">C+A+D</button>
+            <button onclick="sendKey('WIN_3')">Chrome</button>
+        </div>
+    </div>
+
+    <!-- 底部固定列 -->
+    <div class="bottom-bar">
+        <span>星光控制器 V1.0</span>
+    </div>
+
+<!-- 程式設定 -->
+<script src="/static/state.js"></script>
+<script src="/static/mouse.js"></script>
+<script src="/static/keyboard.js"></script>
+
+
+</body>
+</html>
