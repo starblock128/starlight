@@ -1,0 +1,25 @@
+# Python 暫存檔案
+__pycache__/
+*.pyc
+*.pyo
+*.mpy
+
+# VS Code 編輯器設定
+.vscode/
+
+# 系統自動產生的垃圾檔案
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Windows PowerShell 備份檔
+*.ps1~
+
+# 帳號密碼、憑證、環境變數
+.env
+*.env
+
+# 檔案同步備份、上傳殘留
+*.bak
+*.old
+*.log
