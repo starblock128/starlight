@@ -23,3 +23,13 @@ Desktop.ini
 *.bak
 *.old
 *.log
+
+# 個人備份或測試檔
+*.log
+*.bak
+*.old
+Backup/
+
+# 外部函式庫或開發用 stub
+stubs/
+lib/
