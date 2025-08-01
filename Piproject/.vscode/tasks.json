@@ -7,7 +7,7 @@
             "command": "powershell.exe",
             "args": [
                 "-ExecutionPolicy", "Bypass",
-                "-File", "${workspaceFolder}\\tools\\sync.ps1"
+                "-File", "${workspaceFolder}\\tools\\pi_sync.ps1"
             ],
             "group": {
                 "kind": "build",

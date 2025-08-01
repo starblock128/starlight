@@ -3,6 +3,16 @@
     { "path": "." },
     { "path": "PicoProject" },
     { "path": "Piproject" }
-  ]
+  ],
+  "settings": {
+    "python.languageServer": "Pylance", // 使用 Pylance 作為 VS Code 的 Python 語言伺服器，提供 IntelliSense、型別檢查。
+
+    //PICO同步任務
+    "triggerTaskOnSave.tasks": {
+      "pico_sync": [
+        "PicoProject/**/*.py"
+      ]
+     }
+    }
 }
 
