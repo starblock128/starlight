@@ -91,6 +91,10 @@ while True:
             mouse.click(Mouse.LEFT_BUTTON)
         elif cmd == 'right_click':
             mouse.click(Mouse.RIGHT_BUTTON)
+        elif cmd == 'scroll_up':
+            mouse.move(wheel=10)
+        elif cmd == 'scroll_down':
+            mouse.move(wheel=-10)
 
         #功能鍵輸入
         elif cmd.startswith("CMD:"): #.startswith用於取得開頭

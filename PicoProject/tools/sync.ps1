@@ -7,9 +7,9 @@
 #   4. 只複製修改過的檔案，加快速度
 # ===========================================
 
-# === 專案設定 ===
-$source = "C:\Users\water\Desktop\PicoProject"   # 專案資料夾
-$target = "D:\"                                  # CIRCUITPY 掛載路徑
+# === 設定來源與目標 ===
+$source = "C:\Users\water\Desktop\StarLight\PicoProject"
+$target = "D:\"  # 請依你實際的 CIRCUITPY 掛載盤調整
 
 # === 排除資料夾（相對於專案根目錄）===
 $excludeDirs = @(
